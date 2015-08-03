@@ -365,6 +365,13 @@ class ElasticSearchStatsEvalHelpers(object):
         return stats['indices']['docs']['count']
 
     @classmethod
+    def get_cluster_status(
+            cls,
+            stats
+    ):
+        return stats['status']
+
+    @classmethod
     def get_heap_used_percent(
             cls,
             stats
