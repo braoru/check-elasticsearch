@@ -372,6 +372,13 @@ class ElasticSearchStatsEvalHelpers(object):
         return stats['nodes'].values()[0]['jvm']['mem']['heap_used_percent']
 
     @classmethod
+    def get_disk_io_op(
+            cls,
+            stats
+    ):
+        return stats['nodes'].values()[0]['fs']['total']['disk_io_op']
+
+    @classmethod
     def filter_nb_indexed_docs(
             cls,
             stats
