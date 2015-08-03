@@ -64,7 +64,7 @@ class ElasticSearchStatsHelpers(object):
 
     #required URL
     URI_TEMPLATE = "{scheme}://{host}:{port}{url}"
-    URL_NODE_STATS_TEMPLATE = "/_nodes/{node}/stats"
+    URL_NODE_STATS_TEMPLATE = "/_nodes/{node_id}/stats"
     URL_CLUSTER_STATS_TEMPLATE = "/_cluster/stats"
 
     @classmethod
@@ -364,6 +364,12 @@ class ElasticSearchStatsEvalHelpers(object):
     ):
         return stats['indices']['docs']['count']
 
+    @classmethod
+    def get_heap_used_percent(
+            cls,
+            stats
+    ):
+        return stats['nodes'].values()[0]['jvm']['mem']['heap_used_percent']
 
     @classmethod
     def filter_nb_indexed_docs(
